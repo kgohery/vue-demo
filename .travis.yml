@@ -5,16 +5,16 @@ language: node_js
 node_js:
   - "10"
 
+python:
+  - "3.7"
+
 services:
   - docker
 
 before_install:
-  # set up awscli packages
-  - sudo apt-get install python3.7
   - pip install --user awscli
 
 script:
-  - pip install --user awscli
   - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
   - eval $(aws ecr get-login --region eu-west-1)
   - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
