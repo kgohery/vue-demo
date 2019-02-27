@@ -1,12 +1,19 @@
+sudo: required
+
 language: node_js
+
 node_js:
   - "10"
-sudo: required
+
+python:
+  - "3.7"
+
 services:
   - docker
 
 before_install:
   # set up awscli packages
+  - apt-get install python2.7
   - pip install --user awscli
 
 script:
