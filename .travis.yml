@@ -2,8 +2,14 @@ sudo: required
 
 language: python
 
+cache: pip
+
 node_js:
   - "10"
+
+cache:
+  directories:
+  - $HOME/.local
 
 python:
   - "2.7"
