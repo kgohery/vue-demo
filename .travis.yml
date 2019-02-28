@@ -14,15 +14,7 @@ install:
 script:
   - echo "no tests!" # put your normal testing scripts here
 
-# before_install:
-#   - sudo apt-get install python3
-
-# script:
-#   # - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
-#   - eval $(aws ecr get-login --region eu-west-1)
-#   - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
-
-after_success:
+script:
   - docker --version # document the version travis is using
   - pip install --user awscli # install aws cli w/o sudo
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
