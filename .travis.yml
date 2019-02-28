@@ -27,7 +27,7 @@ after_success:
   - pip install --user awscli # install aws cli w/o sudo
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
   - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
-  - eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - eval $(aws ecr get-login --region eu-west-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
   - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
 
 env:
