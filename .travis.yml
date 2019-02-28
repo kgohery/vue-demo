@@ -1,8 +1,10 @@
 sudo: required
 
-language: python
+language: node_js
 
-cache: pip
+cache:
+  directories:
+  - $HOME/.local
 
 node_js:
   - "10"
