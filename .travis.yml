@@ -8,13 +8,26 @@ python:
 services:
   - docker
 
-before_install:
-  - sudo apt-get install python3
+install:
+  - echo "install nothing!" # put your normal pre-testing installs here
 
 script:
-  # - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
-  - eval $(aws ecr get-login --region eu-west-1)
-  - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
+  - echo "no tests!" # put your normal testing scripts here
+
+# before_install:
+#   - sudo apt-get install python3
+
+# script:
+#   # - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
+#   - eval $(aws ecr get-login --region eu-west-1)
+#   - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
+
+after_success:
+  - docker --version # document the version travis is using
+  - pip install --user awscli # install aws cli w/o sudo
+  - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+
 env:
   global:
     - secure: yVWDU5n7sfc05m7eBDzT7Jo16MuzwwIicv8WIsChHftI2+cotj5HIAjNEgGiPM3E+B7KGaRLbFJzipH8zAck1ZVUUYeOf5HE8s9velftKU3i2exCwqBlFiPFbDGqUEJvrvDu6FUShTa+JRGW6uZeOUqbQRKOKF/WcFw99RPxltx8gkNLMI9xGiDPDSN0EA9K36aWioRyoxfh1vE12aGD10wuddD6FAQYEjABPUYcJNQ0kK2OcnnkV36nW+usnrlWo1ECeqx4NPMeiwGQnZ4qzvAtXaG0kr7WHGmahHZLfKL3FB1+4Ng7/p2xPDab4BvFekEw3NmmAq5lmzBPrwh3Ql2OHKcBVovZld7nVY9pMovkImoyoh8r3eDkV3YxYwXJCDpNL2ljbCreraPl9ZICO9sSHqcR57INLIlKRQzshn7FNX53TPZ/RefQLVl4LWC2ygZWnxDuH90xRf2tp5sOXVb5fRgQqCRGNf0QOkobmURYkBmBNlKXzIODnGYYObPESDtUMSKFxb67I4bkSeqaHqWN7ZNIXnXpOm8GoG+Jx/SwEEfovJlmtc7i01KIXy++ksZ/2XECnVHG7Izs8ePxf1eiH4cA6qEyclNxVFHdqEyfIORy3Eze9xBgohBFY8Kej2UaWxikSnmC++TN7mPqiY/KoXehd7ucBdCCFjkQ5PQ=
