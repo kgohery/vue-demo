@@ -8,15 +8,8 @@ python:
 services:
   - docker
 
-before_install:
-  - sudo apt-get install python3-venv
-
 install:
-  - sudo python3 -m venv env
-  - sudo source ./env/bin/activate
-  - sudo python -m pip install awscli # install aws cli w/o sudo
-  # - pip install --user
-  # - export PATH=$PATH:$HOME/.local/bin # put aws in the path
+  - python -m pip install --user awscli
 
 script:
   # - docker --version # document the version travis is using
