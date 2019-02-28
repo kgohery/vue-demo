@@ -34,7 +34,8 @@ after_success:
   - docker --version # document the version travis is using
   - pip install --user awscli # install aws cli w/o sudo
   - export PATH=$PATH:$HOME/.local/bin # put aws in the path
-  - aws ecr get-login --region eu-west-1 #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - aws --v
+  - eval $(aws ecr get-login --region eu-west-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
   # - docker build . -t 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
   # - docker push 428728527901.dkr.ecr.eu-west-1.amazonaws.com/vue-demo
 
