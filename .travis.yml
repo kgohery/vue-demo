@@ -8,8 +8,10 @@ python:
 services:
   - docker
 
-install:
+before_install:
   - sudo apt-get install python3-venv
+
+install:
   - python3 -m venv env
   - source ./env/bin/activate
   - python -m pip install awscli # install aws cli w/o sudo
